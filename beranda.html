@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Bookstore</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #books {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .book-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px 0;
+      justify-content: center;
+      flex-wrap: wrap;  /* Untuk tiling yang lebih rapi */
+    }
+
+    .book-card {
+      flex: 0 0 auto;
+      width: 200px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .book-card button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .book-card button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Styling untuk filter */
+    .book-filters {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .book-filters button {
+      margin: 0 10px;
+      padding: 10px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .book-filters button:hover {
+      background-color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header">
+      <div class="logo">
+       <span>
+        LiteraStore.com
+       </span>
+      </div>
+      <div class="search-bar">
+       <input placeholder="Cari Produk, Judul Buku, atau Penulis" type="text"/>
+       <i class="fas fa-search">
+       </i>
+      </div>
+      <div class="nav-links">
+       <a href="#">
+        Promo
+       </a>
+       <a href="Favorite.html">
+        Favorit
+       </a>
+       <a href="contact.html">
+        Hubungi Kami
+       </a>
+      </div>
+      <div class="auth-buttons">
+       <a href="Login.html">
+        <button class="login">
+        Masuk
+      </a>
+       </button>
+       <a href="daftar.html">
+       <button class="register">
+        Daftar
+       </button>
+      </a>
+      </div>
+     </div>
+     <div class="main-content">
+      <div class="promo">
+       <div class="promo-item">
+        <a href="sinopsis.html">
+        <img alt="Misteri Bilik Korek Api book cover" height="400" src="https://storage.googleapis.com/a1aa/image/qD5nYLQWzQ5UI9jeUfgfiDoafAOD9ezq405ajoGKzq43a1leE.jpg" width="600"/>
+      </a>
+        <div class="promo-info">
+         <h3>
+          MISTERI BILIK KOREK API
+         </h3>
+         <p>
+          Karya Ruwi Meita
+         </p>
+         <p class="price">
+          Rp 65.000
+          <span class="old-price">
+           Rp 79.000
+          </span>
+         </p>
+         <p class="bonus">
+          Bonus: Korek Api
+         </p>
+         <p class="date">
+          26 November - 11 Desember 2024
+         </p>
+         <p class="terms">
+          *S&amp;K berlaku
+         </p>
+         <div class="special-offer">
+          Special Offer
+         </div>
+        </div>
+       </div>
+       <div class="promo-item">
+        <img alt="Save The Date book cover" height="400" src="https://storage.googleapis.com/a1aa/image/HR7MiMG9kNa5KNeFv3kkLHXph8zlmztlO8lfVmVihs7Qru0TA.jpg" width="600"/>
+        <div class="promo-info">
+         <h3>
+          SAVE THE DATE
+         </h3>
+         <p>
+          Karya Priska Natasha
+         </p>
+         <p class="price">
+          Rp 75.000
+         </p>
+         <p class="bonus">
+          Bonus: Recipe Card
+         </p>
+         <p class="date">
+          23 - 30 November 2024
+         </p>
+         <p class="terms">
+          *S&amp;K berlaku
+         </p>
+         <div class="special-offer">
+          Special Offer
+         </div>
+        </div>
+       </div>
+       <div class="promo-item">
+        <img alt="City of Evils book cover" height="400" src="https://storage.googleapis.com/a1aa/image/T4Cxw9weqPSidCgzpclSQgb9V0DsQAyrbOVyWWCdllnnVX6JA.jpg" width="600"/>
+        <div class="promo-info">
+         <h3>
+          CITY OF EVILS
+         </h3>
+         <p>
+          Karya Lexie Xue
+         </p>
+         <p class="price">
+          Rp 119.000
+          <span class="old-price">
+            Rp 129.000
+           </span>
+         </p>
+         <p class="bonus">
+          Bonus: Lanyard, ID card, dan USB
+         </p>
+         <p class="date">
+          20 - 30 November 2024
+         </p>
+         <p class="terms">
+          *S&amp;K berlaku
+         </p>
+         <div class="pre-order">
+          Pre-Order
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="categories">
+       <div class="category">
+        <img alt="Category 1 icon" height="50" src="https://storage.googleapis.com/a1aa/image/jwESfK8A3RWAaCpCpPxx84jjTyPSNTy6w6C5UVniVtgqVX6JA.jpg" width="50"/>
+        <p>
+         Dongeng
+        </p>
+       </div>
+       <div class="category">
+        <img alt="Category 2 icon" height="50" src="https://storage.googleapis.com/a1aa/image/aVsoqS7Ues1qQqRj1vyfnf6WPyDX1M5DY1Iixig6sM0wWdpnA.jpg" width="50"/>
+        <p>
+         Fantasi
+        </p>
+       </div>
+       <div class="category">
+        <img alt="Category 3 icon" height="50" src="https://storage.googleapis.com/a1aa/image/q2gyeB5DO9zfWkshq60Wc9DjpKxCneYyVpbHtudxuJUvWdpnA.jpg" width="50"/>
+        <p>
+         Fiksi
+        </p>
+       </div>
+       <div class="category">
+        <img alt="Category 4 icon" height="50" src="https://storage.googleapis.com/a1aa/image/2Ql5dOMWtibaBR5DlokDynfO8svD6jj1Sxoumjnyon3sVX6JA.jpg" width="50"/>
+        <p>
+         Novel
+        </p>
+       </div>
+       <div class="category">
+        <img alt="Category 5 icon" height="50" src="https://storage.googleapis.com/a1aa/image/yK0j15zTkUrJA5d42Gsxe3o4ABlBripZ9ciDHeHdhYemWdpnA.jpg" width="50"/>
+        <p>
+         Komik
+        </p>
+       </div>
+       <div class="category">
+        <img alt="Category 6 icon" height="50" src="https://storage.googleapis.com/a1aa/image/TOCDLmCPhgqhKpmgSYMmx28picAzlXMzLAnrio9rf5bnVX6JA.jpg" width="50"/>
+        <p>
+         Ensiklopedia
+        </p>
+       </div>
+      </div>
+     </div>
+  </header>
+  </section>
+  <section id="book">
+    <div class="book-category">
+      <h2>Rekomendasi Buku</h2>
+      <div class="carousel">
+        <div class="book-list">
+          <div class="book-card">
+            <div class="promo-info"></div>
+            <img src="gambar/Algoritma.jpg" alt="Book 1">
+            <h3>Algoritma dan Pemrograman</h3> <hr>
+            <p style="text-align: left;"></p>
+            Karya William Stalling
+            <p class="price" style="text-align: left;">
+              Rp 69.000
+            </p>
+            <p class="bonus" style="text-align: left;">
+              Bonus: Tanda Baca
+            </p>        
+            <button onclick="addToCart('Book Title 1', 69.000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Marvel.jpg" alt="Book 2">
+            <h3>Comics Marvel</h3>
+            <p style="text-align: left;">
+              Karya William Stalling
+              <p class="price" style="text-align: left;">
+                Rp 69.000
+              </p>
+              <p class="bonus" style="text-align: left;">
+                Bonus: Tanda Baca
+              </p>       
+            <button onclick="addToCart('Book Title 2', 99.000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Bluelock.jpg" alt="Book 3">
+            <h3>Blue Lock</h3>
+            <button onclick="addToCart('Book Title 3', 70000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Juki.jpg" alt="Book 4">
+            <h3>Book Title 4</h3>
+            <button onclick="addToCart('Book Title 4', 80000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Godam.jpeg" alt="Book 5">
+            <h3>Book Title 5</h3>
+            <button onclick="addToCart('Book Title 5', 90000)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="book-category">
+      <h2>Novel</h2>
+      <div class="carousel">
+        <button class="carousel-control prev" onclick="scrollCarousel('novel', -1)">❮</button>
+        <div class="book-list" id="novel-carousel">
+          <div class="book-card">
+            <img src="gambar/novel.jpg" alt="Novel 1">
+            <h3>Novel 1</h3>
+            <button onclick="addToCart('Novel 1', 120000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/novel2.jpg" alt="Novel 1">
+            <h3>Novel 1</h3>
+            <button onclick="addToCart('Novel 1', 120000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/novel3.jpg" alt="Novel 1">
+            <h3>Novel 1</h3>
+            <button onclick="addToCart('Novel 1', 120000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/novel4.jpg" alt="Novel 1">
+            <h3>Novel 1</h3>
+            <button onclick="addToCart('Novel 1', 120000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/novel5.jpg" alt="Novel 1">
+            <h3>Novel 1</h3>
+            <button onclick="addToCart('Novel 1', 120000)">Add to Cart</button>
+          </div>
+          <!-- Tambahkan item buku lain sesuai keinginan -->
+        </div>
+        <button class="carousel-control next" onclick="scrollCarousel('novel', 1)">❯</button>
+      </div>
+    </div>
+  
+    <div class="book-category">
+      <h2>Komik</h2>
+      <div class="carousel">
+        <button class="carousel-control prev" onclick="scrollCarousel('comic', -1)">❮</button>
+        <div class="book-list" id="comic-carousel">
+          <div class="book-card">
+            <img src="gambar/Marvel.jpg" alt="Comic 1">
+            <h3>Komik Marvel 1000</h3>
+            <button onclick="addToCart('Comic 1', 45000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Godam.jpeg" alt="Comic 1">
+            <h3>Comic 1</h3>
+            <button onclick="addToCart('Comic 1', 45000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Juki.jpg" alt="Comic 1">
+            <h3>Comic 1</h3>
+            <button onclick="addToCart('Comic 1', 45000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Bluelock.jpg" alt="Comic 1">
+            <h3>Comic 1</h3>
+            <button onclick="addToCart('Comic 1', 45000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/spiderman.jpeg" alt="Comic 1">
+            <h3>Comic 1</h3>
+            <button onclick="addToCart('Comic 1', 45000)">Add to Cart</button>
+          </div>
+          <!-- Tambahkan item buku lain sesuai keinginan -->
+        </div>
+        <button class="carousel-control next" onclick="scrollCarousel('comic', 1)">❯</button>
+      </div>
+    </div>
+  
+    <div class="book-category">
+      <h2>Ensiklopedia</h2>
+      <div class="carousel">
+        <button class="carousel-control prev" onclick="scrollCarousel('encyclopedia', -1)">❮</button>
+        <div class="book-list" id="encyclopedia-carousel">
+          <div class="book-card">
+            <img src="gambar/ensiklopedia indonesia.jpg" alt="Encyclopedia 1">
+            <h3>Encyclopedia 1</h3>
+            <button onclick="addToCart('Encyclopedia 1', 150000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Ensklopedia.jpg" alt="Encyclopedia 1">
+            <h3>Encyclopedia 1</h3>
+            <button onclick="addToCart('Encyclopedia 1', 150000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/kiamat.jpg" alt="Encyclopedia 1">
+            <h3>Encyclopedia 1</h3>
+            <button onclick="addToCart('Encyclopedia 1', 150000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/bumi.jpg" alt="Encyclopedia 1">
+            <h3>Encyclopedia 1</h3>
+            <button onclick="addToCart('Encyclopedia 1', 150000)">Add to Cart</button>
+          </div>
+          <div class="book-card">
+            <img src="gambar/Produk.jpg" alt="Encyclopedia 1">
+            <h3>Encyclopedia 1</h3>
+            <button onclick="addToCart('Encyclopedia 1', 150000)">Add to Cart</button>
+          </div>
+          <!-- Tambahkan item buku lain sesuai keinginan -->
+        </div>
+        <button class="carousel-control next" onclick="scrollCarousel('encyclopedia', 1)">❯</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Icon keranjang -->
+  <div style="position: fixed; bottom: 80px; right: 20px;">
+    <a href="keranjang.html">
+      <img src="gambar/Keranjang.jpg" alt="Cart Icon" style="width: 50px; height: 50px; cursor: pointer;">
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Online Bookstore. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang Belanja</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cart-container {
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    .total-price {
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: right;
+    }
+
+    .checkout-button {
+      background-color: #0056b3;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2em;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .checkout-button:hover {
+      background-color: #0056b3;
+    }
+
+    .remove-button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .remove-button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Keranjang Belanja</h1>
+    <a href="beranda.html">Kembali ke Toko</a>
+  </header>
+
+  <div class="cart-container">
+    <div id="cart-items">
+      <!-- Items in the cart will be displayed here dynamically -->
+    </div>
+
+    <div class="total-price">
+      Total: Rp.<span id="total-price">0</span>
+    </div>
+
+    <button class="checkout-button" onclick="proceedToCheckout()">Lanjut ke Pembayaran</button>
+  </div>
+
+  <script>
+    // Array to hold cart items
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Display cart items
+    function displayCart() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+
+        cartItemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>Harga: Rp.${item.price}</p>
+            <p>Qty: ${item.quantity}</p>
+          </div>
+          <button class="remove-button" onclick="removeFromCart(${index})">Hapus</button>
+        `;
+        cartItemsContainer.appendChild(cartItemDiv);
+
+        total += item.price * item.quantity;
+      });
+
+      totalPriceElement.textContent = total.toLocaleString();
+    }
+
+    // Function to remove an item from the cart
+    function removeFromCart(index) {
+      cart.splice(index, 1); // Remove item from the array
+      localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+      displayCart(); // Refresh the cart display
+    }
+
+    // Function to proceed to checkout
+    function proceedToCheckout() {
+      if (cart.length > 0) {
+        alert('Melanjutkan ke proses pembayaran...');
+        // Redirect to a checkout page (you can create one later)
+        // window.location.href = 'checkout.html';
+      } else {
+        alert('Keranjang Anda kosong.');
+      }
+    }
+
+    // Initialize cart display
+    displayCart();
+  </script>
+</body>
+</html>
